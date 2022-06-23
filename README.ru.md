@@ -1,17 +1,31 @@
 # metaenterprise
-metarhia library for building enterprise applications
+metarhia библиотека для создания enterprise приложений
 
-## loadCycleServer
+## Последовательность загрузки сервера
+
+### Инициализация Metarhia
+
+### Загрузка метаданных приложения
+
+### Инициализация БД
+
+  * Подключаемся к БД
+  * Проверяем предопределенные таблицы
+  * Проверяем данные из таблицы MetaenterpriseModelDB с таблицами БД 
+
+### Запуск регламентных заданий
+
+### Проверка захваченных объектов
 
 
 
-## Applieds objects -
+## Applieds objects - Типы прикладных дааных
 
 ### Master data
 
 ### Operations
 
-## default Database structure
+## Предопределенная структура БД
 
 ### MetaenterpriseAccount
 
@@ -69,12 +83,5 @@ fields:
   * matadata -  type: 'jsonb'
   * createdAt - type: 'date'
   * updatedAt - type: 'date'
-
-
-
-
-
-
-
 
 
