@@ -1,7 +1,7 @@
 ({
   metadata: {
     type: 'enterprise/systemData',
-    name: 'MetaenterpriseRole',
+    name: 'Role',
     description: {
       en: 'Roles users',
       ru: 'Роли пользователя',
@@ -10,7 +10,9 @@
     fields: {
       name: {
         type: 'string',
-        pgType: 'varchar',
+        pg: {
+          type: 'varchar',
+        },
         name: 'name',
         description: {
           en: 'Name',
@@ -18,7 +20,7 @@
         },
       },
     },
-    tables: {
+    subTables: {
     },
     hooks: {
       beforeSave: async (failure = false) => {

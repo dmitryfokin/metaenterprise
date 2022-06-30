@@ -1,7 +1,7 @@
 ({
   metadata: {
     type: 'enterprise/systemData',
-    name: 'MetaenterpriseAccount',
+    name: 'Account',
     description: {
       en: 'Accounts',
       ru: 'Аккаунты пользователей',
@@ -10,8 +10,10 @@
     fields: {
       dataPassword: {
         type: 'object',
-        pgType: 'jsonb',
-        name: 'data',
+        pg: {
+          type: 'jsonb',
+        },
+        name: 'dataPassword',
         description: {
           en: 'Data password',
           ru: 'Данные пароля',
@@ -19,7 +21,10 @@
       },
       login: {
         type: 'string',
-        pgType: 'varchar',
+        pg: {
+          type: 'varchar',
+          notNULL: true,
+        },
         name: 'login',
         description: {
           en: 'Login',
@@ -28,9 +33,11 @@
       },
       password: {
         type: 'string',
-        pgType: 'varchar',
+        pg:{ 
+          type: 'varchar',
+          notNULL: true,
+        },
         name: 'password',
-        notNULL: true,
         secretField: true,
         description: {
           en: 'Password',
@@ -38,7 +45,7 @@
         },
       },
     },
-    tables: {
+    subTables: {
       userRoles: {
         name: 'userRoles',
         description: {
@@ -47,8 +54,10 @@
         },
         fields: {
           Role: {
-            type: 'enterprise/systemData/MetaenterpriseRole',
-            pgType: 'uuid',
+            type: 'enterprise/systemData/Role',
+            pg: {
+              type: 'uuid',
+            },
             name: 'Account',
             description: {
               en: 'Account',

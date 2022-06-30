@@ -1,7 +1,7 @@
 ({
   metadata: {
     type: 'enterprise/systemData',
-    name: 'MetaenterpriseSession',
+    name: 'Session',
     description: {
       en: 'User sessin data',
       ru: 'Данные сессии пользователя',
@@ -9,8 +9,10 @@
     representationDefinition: {},
     fields: {
       Account: {
-        type: 'enterprise/systemData/MetaenterpriseAccount',
-        pgType: 'uuid',
+        type: 'enterprise/systemData/Account',
+        pg: {
+          type: 'uuid',
+        },
         name: 'Account',
         description: {
           en: 'Account',
@@ -19,7 +21,9 @@
       },
       data: {
         type: 'object',
-        pgType: 'jsonb',
+        pg: {
+          type: 'jsonb',
+        },
         name: 'data',
         description: {
           en: 'Data sessin',
@@ -28,7 +32,9 @@
       },
       token: {
         type: 'string',
-        pgType: 'varchar',
+        pg: {
+          type: 'varchar',
+        },
         name: 'token',
         description: {
           en: 'Token',
@@ -37,7 +43,9 @@
       },
       ip: {
         type: 'string',
-        pgType: 'inet',
+        pg: {
+          type: 'inet',
+        },
         name: 'ip',
         description: {
           en: 'ip',
@@ -45,14 +53,14 @@
         },
       },
     },
-    tables: {
+    subTables: {
     },
     hooks: {
       beforeSave: async (failure = false) => {
-        console.debug('Before save Nomenclature');
+        console.debug('Before save Session');
       },
       afterSave: async (failure = false) => {
-        console.debug('After save Nomenclature');
+        console.debug('After save Session');
       },
     },
   },
