@@ -5,23 +5,34 @@
   },
 
   async initDBStructure() {
-    const enterprise = this.metadata.enterprise;
     // TODO: нуэно продумать последовательность создание объектов БД и правильную
     //   обработку ошибок
-    // await enterprise.loadMetadataFromFiles(path.join(enterprise.root, 'data', 'schemas'));
+    const initScripts = [
+      `
+        CREATE OR REPLACE FUNCTION "triggerSetTimestamp"()
+        RETURNS TRIGGER AS $$
+        BEGIN
+        NEW."updatedAt" = NOW();
+        NEW."recordVersion" = OLD."recordVersion" + 1;
+        RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql;
+      `,
+    ];
+
     const firstScripts = initScripts.map((script) => ({
       kind: 'query',
       query: script,
       values: [],
     }));
-    const query = enterprise.systemData.sqlCreateDBStructure();
-    const res = await enterprise.db.executeTransaction(
+    const query = systemData.sqlCreateDBStructure();
+    const res = await db.executeTransaction(
       [...firstScripts, ...query],
     );
 
     if (res.status !== 'success') return res;
 
-    const roleDeveloper = await enterprise.systemData.Role.create();
+    const roleDeveloper = await systemData.Role.create();
     roleDeveloper.name = 'Developer';
     await roleDeveloper.save();
 
@@ -29,26 +40,29 @@
   },
 
   async dropDBStructure() {
-    const enterprise = this.metadata.enterprise;
+    const dropScripts = [
+      `
+      DROP FUNCTION "triggerSetTimestamp";
+      `,
+    ];
     // TODO: Структуру надо брать из systemData_Schema, а не из файлов
-    // await enterprise.loadMetadataFromFiles(path.join(enterprise.root, 'data', 'schemas'));
-    const query = enterprise.systemData.sqlDropDBStructure();
+    const query = systemData.sqlDropDBStructure();
     const lastScripts = dropScripts.map((script) => ({
       kind: 'query',
       query: script,
       values: [],
     }));
 
-    const res = await enterprise.db.executeTransaction(
+    const res = await db.executeTransaction(
       [...query, ...lastScripts],
     );
 
     return res;
   },
-  
+
   async updateDBStructure() {
   },
-  
+
   async testDB() {
     //const e = this.metadata.enterprise;
     // await enterprise.loadMetadataFromFiles(path.join(enterprise.root, 'data', 'schemas'));
