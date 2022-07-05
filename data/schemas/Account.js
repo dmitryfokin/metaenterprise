@@ -1,12 +1,12 @@
 ({
   metadata: {
-    type: 'enterprise/systemData',
+    type: 'me#/systemData/Account',
     name: 'Account',
     description: {
       en: 'Accounts',
       ru: 'Аккаунты пользователей',
     },
-    representationDefinition: {},
+    representationDefinition: {field: 'login'},
     fields: {
       dataPassword: {
         type: 'object',
@@ -47,6 +47,7 @@
     },
     subTables: {
       userRoles: {
+        type: 'me#/systemData/Account/userRoles',
         name: 'userRoles',
         description: {
           en: 'User roles',
@@ -54,14 +55,14 @@
         },
         fields: {
           Role: {
-            type: 'enterprise/systemData/Role',
+            type: 'me#/systemData/Role',
             pg: {
               type: 'uuid',
             },
-            name: 'Account',
+            name: 'Role',
             description: {
-              en: 'Account',
-              ru: 'Пользователь БД',
+              en: 'Role',
+              ru: 'Роль',
             },
           },
 
