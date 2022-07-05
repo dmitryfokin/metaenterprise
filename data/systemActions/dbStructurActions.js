@@ -1,6 +1,6 @@
 ({
   metadata: {
-    type: 'enterprise/systemActions',
+    type: 'me#/systemActions',
     name: 'dbStructur',
   },
 
@@ -32,9 +32,9 @@
 
     if (res.status !== 'success') return res;
 
-    const roleDeveloper = await systemData.Role.create();
-    roleDeveloper.name = 'Developer';
-    await roleDeveloper.save();
+    // const roleDeveloper = await systemData.Role.create();
+    // roleDeveloper.name = 'Developer';
+    // await roleDeveloper.save();
 
     return res;
   },

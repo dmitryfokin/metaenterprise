@@ -1,6 +1,6 @@
 ({
   metadata: {
-    type: 'enterprise/systemData',
+    type: 'me#/systemData/Enterprise',
     name: 'Enterprise',
     description: {
       en: 'Enterprise',

@@ -1,6 +1,6 @@
 ({
   metadata: {
-    type: 'enterprise/systemActions',
+    type: 'me#/systemActions',
     name: 'userSession',
   },
 

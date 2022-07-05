@@ -1,6 +1,6 @@
 ({
   metadata: {
-    type: 'enterprise/systemData',
+    type: 'me#/systemData/Session',
     name: 'Session',
     description: {
       en: 'User sessin data',
@@ -9,7 +9,7 @@
     representationDefinition: {},
     fields: {
       Account: {
-        type: 'enterprise/systemData/Account',
+        type: 'me#/systemData/Account',
         pg: {
           type: 'uuid',
         },

@@ -1,6 +1,6 @@
 ({
   metadata: {
-    type: 'enterprise/systemData',
+    type: 'me#/systemData/Schema',
     name: 'Schema',
     description: {
       en: 'Schema DB',

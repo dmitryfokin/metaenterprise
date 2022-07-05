@@ -1,12 +1,12 @@
 ({
   metadata: {
-    type: 'enterprise/systemData',
+    type: 'me#/systemData/Role',
     name: 'Role',
     description: {
       en: 'Roles users',
       ru: 'Роли пользователя',
     },
-    representationDefinition: {},
+    representationDefinition: {field: 'name'},
     fields: {
       name: {
         type: 'string',
