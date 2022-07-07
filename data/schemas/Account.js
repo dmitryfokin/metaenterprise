@@ -6,7 +6,7 @@
       en: 'Accounts',
       ru: 'Аккаунты пользователей',
     },
-    representationDefinition: {field: 'login'},
+    representationDefinition: { field: 'login' },
     fields: {
       dataPassword: {
         type: 'object',
@@ -33,7 +33,7 @@
       },
       password: {
         type: 'string',
-        pg:{ 
+        pg: {
           type: 'varchar',
           notNULL: true,
         },
@@ -47,26 +47,27 @@
     },
     subTables: {
       userRoles: {
-        type: 'me#/systemData/Account/userRoles',
-        name: 'userRoles',
-        description: {
-          en: 'User roles',
-          ru: 'Роли пользователя',
-        },
-        fields: {
-          Role: {
-            type: 'me#/systemData/Role',
-            pg: {
-              type: 'uuid',
-            },
-            name: 'Role',
-            description: {
-              en: 'Role',
-              ru: 'Роль',
+        metadata: {
+          type: 'me#/systemData/Account/userRoles',
+          name: 'userRoles',
+          description: {
+            en: 'User roles',
+            ru: 'Роли пользователя',
+          },
+          fields: {
+            Role: {
+              type: 'me#/systemData/Role',
+              pg: {
+                type: 'uuid',
+              },
+              name: 'Role',
+              description: {
+                en: 'Role',
+                ru: 'Роль',
+              },
             },
           },
-
-        },
+        }
       },
     },
     hooks: {
